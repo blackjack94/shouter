@@ -4,6 +4,7 @@ Shouter::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show] do
   	post 'follow' => 'following_relationships#create'
+  	delete 'unfollow' => 'following_relationships#destroy'
   end
 
   resources :shouts, only: [:show]

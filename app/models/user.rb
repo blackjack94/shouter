@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
+
+  def following? other_user
+  	self.followed_users.include? other_user
+  end
+
+  def unfollow! other_user
+  	self.followed_user_relationships.find_by(followed_user_id: other_user.id).destroy
+  end
 end
