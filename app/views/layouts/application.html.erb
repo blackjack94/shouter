@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div>		
+<div>
 	<% if signed_in? %>
 	  <%= link_to current_user.username, dashboard_path %>
 	  <%= link_to 'Sign out', session_path, method: :delete %>
@@ -20,6 +20,9 @@
 
 <% if alert %>
 	<p><%= alert %><p>
+<% end %>
+<% if notice %>
+	<p><%= notice %><p>
 <% end %>
 
 <%= yield %>
